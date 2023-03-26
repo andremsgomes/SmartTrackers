@@ -29,6 +29,9 @@ gem "jbuilder"
 
 gem "rubocop"
 
+# Bootstrap
+gem "twitter-bootstrap-rails"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
