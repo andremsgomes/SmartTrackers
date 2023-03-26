@@ -24,6 +24,10 @@ default: &default
 development:
   <<: *default
   database: smarttrackers_development
+  host: localhost
+  port: 5432
+  user: postgres
+  password: postgres
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,6 +62,9 @@ development:
 test:
   <<: *default
   database: smarttrackers_test
+  port: 5432
+  user: postgres
+  password: postgres
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +88,4 @@ test:
 #
 production:
   <<: *default
-  database: smarttrackers_production
-  username: smarttrackers
-  password: <%= ENV["SMARTTRACKERS_DATABASE_PASSWORD"] %>
+  url: <%= ENV["MY_APP_DATABASE_URL"] %>
