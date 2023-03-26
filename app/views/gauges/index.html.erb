@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Gauges</h1>
+
+<div id="gauges">
+  <% @gauges.each do |gauge| %>
+    <%= render gauge %>
+    <p>
+      <%= link_to "Show this gauge", gauge %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New gauge", new_gauge_path %>

@@ -1,0 +1,2 @@
+class Gauge < ApplicationRecord
+end
