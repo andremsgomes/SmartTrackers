@@ -7,9 +7,9 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Gauge 1
-Gauge.create(name: 'Gauge 1', begin_date: Time.new(2022, 1, 1), end_date: Time.new(2023, 1, 1), unit: :kwh,
+Gauge.create(name: 'Gauge 1', begin_date: DateTime.new(2022, 1, 1), end_date: DateTime.new(2023, 1, 1), unit: :kwh,
              time_unit: :days)
 
 # Gauge 2
-Gauge.create(name: 'Gauge 2', begin_date: Time.new(2022, 6, 1), end_date: Time.new(2025, 6, 1), unit: :kwh,
+Gauge.create(name: 'Gauge 2', begin_date: DateTime.new(2022, 6, 1), end_date: DateTime.new(2025, 6, 1), unit: :kwh,
              time_unit: :months)
