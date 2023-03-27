@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @gauge %>
+
+<div>
+  <%= link_to "Edit this gauge", edit_gauge_path(@gauge) %> |
+  <%= link_to "Back to gauges", gauges_path %>
+
+  <%= button_to "Destroy this gauge", @gauge, method: :delete %>
+</div>
