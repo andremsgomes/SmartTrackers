@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="text-center mb-4"><%= @gauge.name %></h1>
 
-<%= render @gauge %>
-
-<div>
-  <%= link_to "Edit this gauge", edit_gauge_path(@gauge) %> |
-  <%= link_to "Back to gauges", gauges_path %>
-
-  <%= button_to "Destroy this gauge", @gauge, method: :delete %>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tr>
+      <td style="width: 50%"><b>Begin date:</b> <%= @gauge.begin_date.strftime("%Y/%m/%d") %></td>
+      <td style="width: 50%"><b>End date:</b> <%= @gauge.end_date.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+      <td style="width: 50%"><b>Measured unit:</b> <%= @gauge.unit %></td>
+      <td style="width: 50%"><b>Time unit:</b> <%= @gauge.time_unit %></td>
+    </tr>
+  </table>
 </div>
