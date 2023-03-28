@@ -1,10 +1,45 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="text-center mb-4"><%= @gauge.name %></h1>
 
-<%= render @gauge %>
-
-<div>
-  <%= link_to "Edit this gauge", edit_gauge_path(@gauge) %> |
-  <%= link_to "Back to gauges", gauges_path %>
-
-  <%= button_to "Destroy this gauge", @gauge, method: :delete %>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tr>
+      <td style="width: 50%"><b>Begin date:</b> <%= @gauge.begin_date.strftime("%Y/%m/%d") %></td>
+      <td style="width: 50%"><b>End date:</b> <%= @gauge.end_date.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+      <td style="width: 50%"><b>Measured unit:</b> <%= @gauge.unit %></td>
+      <td style="width: 50%"><b>Time unit:</b> <%= @gauge.time_unit %></td>
+    </tr>
+  </table>
 </div>
+
+<h2 class="text-center mt-5 mb-4">Entries</h2>
+
+<% if @gauge.gauge_entries.length.zero? %>
+  <h4>There are no entries for this gauge yet!</h4>
+<% else %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 60%">Date</th>
+          <th scope="col" style="width: 40%">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @gauge.gauge_entries.order(:created_at).each do |gauge_entry| %>
+          <tr>
+            <td><%= gauge_entry.created_at.strftime("%Y/%m/%d") %></td>
+            <td><%= gauge_entry.value %> <%= @gauge.unit %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">Total</th>
+          <td><%= @gauge.total_measured %> <%= @gauge.unit %></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+<% end %>

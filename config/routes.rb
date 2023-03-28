@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "gauges#index"
+  get "/gauges/show/:id", to: "gauges#show"
 end
