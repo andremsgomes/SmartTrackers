@@ -40,6 +40,10 @@ describe 'Show gauge', type: :feature do
     expect(page).to have_content('Entries')
   end
 
+  it 'displays a button to add a new entry' do
+    expect(page).to have_button('Add a new Entry')
+  end
+
   context 'when there are no entries' do
     it 'displays a message' do
       expect(page).to have_content('There are no entries for this gauge yet!')
