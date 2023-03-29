@@ -1,0 +1,29 @@
+<h1 class="text-center mb-4">New gauge entry for <%= @gauge.name %></h1>
+
+<% if @error.present? %>
+    <div style="color: red" class="mb-4">
+        <h5 class="text-center"><%= @error %></h5>
+    </div>
+<% end %>
+
+<form action="/gauge_entries" method="post">
+    <%= token_tag %>
+    <input type="hidden" id="gauge_id" name="gauge_id" value="<%= @gauge.id %>">
+    <div class="text-center">
+        <div class="row g-3 justify-content-center">
+            <div class="col-auto">
+                <label for="value" class="col-form-label">Value:</label>
+            </div>
+            <div class="col-auto">
+                <input type="number" min="0" step=".1" name="value" id="value" class="form-control">
+            </div>
+            <div class="col-auto">
+                <span class="form-text">
+                    (<%= @gauge.unit %>)
+                </span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Add Entry</button>
+    </div>
+</form>
