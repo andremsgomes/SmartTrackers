@@ -5,6 +5,7 @@ class GaugeEntriesController < ApplicationController
   before_action :authenticate_user!
   # GET gauges/id/gauge_entries/new
   def new
+    redirect to gauges_path if current_user.role == 'manager'
     @gauge = Gauge.find(params[:id])
     @gauge_entry = GaugeEntry.new
   end

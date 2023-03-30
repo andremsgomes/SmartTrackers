@@ -11,7 +11,9 @@
     <% end %>
   </div>
 
-  <div class="text-center">
-    <%= link_to '<button type="button" class="btn btn-primary my-4">Add a new Gauge</button>'.html_safe, gauges_new_path %>
-  </div>
+  <% if current_user.role == 'employee' %>
+    <div class="text-center">
+      <%= link_to '<button type="button" class="btn btn-primary my-4">Add a new Gauge</button>'.html_safe, gauges_new_path %>
+    </div>
+  <% end %>
 </div>
