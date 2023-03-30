@@ -4,6 +4,7 @@
 # rubocop:disable Metrics/PerceivedComplexity
 
 class GaugesController < ApplicationController
+  before_action :authenticate_user!
   # GET /gauges or /gauges.json
   def index
     @gauges = Gauge.all
