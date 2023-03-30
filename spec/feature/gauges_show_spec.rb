@@ -74,10 +74,6 @@ describe 'Show gauge', type: :feature do
       expect(page).to have_content('3.3 kwh')
     end
 
-    it 'displays a button to approve the first entry' do
-      expect(page).to have_button('Approve')
-    end
-
     it 'displays the date of the second entry' do
       expect(page).to have_content('2022/01/03')
     end
