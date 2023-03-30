@@ -59,10 +59,10 @@ describe 'Show gauge', type: :feature do
     end
   end
 
-  context 'when there are entries' do
+  context 'when there are entries, being some approved and others not' do
     before do
-      gauge1.gauge_entries.create(created_at: DateTime.new(2022, 1, 2), value: 3.3)
-      gauge1.gauge_entries.create(created_at: DateTime.new(2022, 1, 3), value: 4.8)
+      gauge1.gauge_entries.create(created_at: DateTime.new(2022, 1, 2), value: 3.3, approved: false)
+      gauge1.gauge_entries.create(created_at: DateTime.new(2022, 1, 3), value: 4.8, approved: true)
       visit("/gauges/show/#{gauge1.id}")
     end
 
@@ -74,6 +74,10 @@ describe 'Show gauge', type: :feature do
       expect(page).to have_content('3.3 kwh')
     end
 
+    it 'displays a button to approve the first entry' do
+      expect(page).to have_button('Approve')
+    end
+
     it 'displays the date of the second entry' do
       expect(page).to have_content('2022/01/03')
     end
@@ -82,8 +86,16 @@ describe 'Show gauge', type: :feature do
       expect(page).to have_content('4.8 kwh')
     end
 
+    it 'displays the indication that the second entry is approved' do
+      expect(page).to have_content('Approved')
+    end
+
     it 'displays the total value of the entries' do
       expect(page).to have_content("#{3.3 + 4.8} kwh")
+    end
+
+    it 'displays the total number of entries approved' do
+      expect(page).to have_content("1")
     end
   end
 end
