@@ -20,6 +20,15 @@
 
   - Run in the terminal:
     - rails s
+    
+## Credentials
+
+ - Manager:
+   - email: manager@smarttrackers.com
+   - password: 123456
+ - Employee:
+   - email: employee@smarttrackers.com
+   - password: 123456
 
 # How to run the test suite
 
