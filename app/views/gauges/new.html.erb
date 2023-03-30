@@ -1,9 +1,48 @@
-<h1>New gauge</h1>
+<h1 class="text-center mb-4">New gauge</h1>
 
-<%= render "form", gauge: @gauge %>
+<% if @error.present? %>
+    <div style="color: red" class="mb-4">
+        <h5 class="text-center"><%= @error %></h5>
+    </div>
+<% end %>
 
-<br>
-
-<div>
-  <%= link_to "Back to gauges", gauges_path %>
-</div>
+<form action="/gauges" method="post">
+  <%= token_tag %>
+  <div class="row form-row justify-content-center">
+    <div class="col-md-6">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name">
+    </div>
+  </div>
+  <div class="row form-row justify-content-center mt-3">
+    <div class="col-md-3">
+      <label for="begin">Begin Date</label>
+      <input type="date" class="form-control" id="begin" name="begin">
+    </div>
+    <div class="col-md-3">
+      <label for="end">End Date</label>
+      <input type="date" class="form-control" id="end" name="end">
+    </div>
+  </div>
+  <div class="row form-row mt-3 justify-content-center">
+    <div class="form-group col-md-3">
+      <label for="unit">Measurement Unit</label>
+      <select name="unit" id="unit">
+        <% Gauge.units.keys.each do |unit| %>
+          <option value=<%= unit %>><%= unit %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="time_unit">Time unit</label>
+      <select name="time_unit" id="time_unit">
+        <% Gauge.time_units.keys.each do |time_unit| %>
+          <option value=<%= time_unit %>><%= time_unit %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary mt-3">Add Gauge</button>
+  </div>
+</form>
