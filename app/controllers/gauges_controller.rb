@@ -17,6 +17,7 @@ class GaugesController < ApplicationController
 
   # GET /gauges/new
   def new
+    redirect to gauges_path if current_user.role == 'manager'
     @gauge = Gauge.new
     @units = Gauge.units.keys
   end
