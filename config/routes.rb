@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get '/gauges/show/:id', to: 'gauges#show'
   get '/gauges/:id/gauge_entries/new', to: 'gauge_entries#new', as: 'gauge_entries_new'
   post '/gauge_entries', to: 'gauge_entries#create'
-  get 'gauges/new', to: 'gauges#new'
+  get 'gauges/new', to: 'gauges#new', as: 'gauges_new'
   post 'gauges', to: 'gauges#create'
 end
