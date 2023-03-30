@@ -3,9 +3,13 @@
 <div id="gauges">
   <div class="row">
     <% @gauges.each do |gauge| %>
-      <div class="col-lg-4 col-md-6 col-12 mx-2 my-3">
+      <div class="col-lg-4 col-md-6 col-12 px-2 my-3">
         <%= render gauge %>
       </div>
     <% end %>
+  </div>
+
+  <div class="text-center">
+    <%= link_to '<button type="button" class="btn btn-primary my-4">Add a new Gauge</button>'.html_safe, gauges_new_path %>
   </div>
 </div>

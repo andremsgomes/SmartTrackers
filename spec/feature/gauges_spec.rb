@@ -15,6 +15,10 @@ describe 'Gauges list', type: :feature do
     expect(page).to have_content('Gauges')
   end
 
+  it 'displays a button to add a new gauge' do
+    expect(page).to have_button('Add a new Gauge')
+  end
+
   context 'when there are gauges' do
     let(:gauge1) do
       Gauge.create(name: 'Gauge 1', begin_date: DateTime.new(2022, 1, 1), end_date: DateTime.new(2023, 1, 1), unit: :kwh,
