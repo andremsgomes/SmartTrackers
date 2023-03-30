@@ -2,6 +2,7 @@
 # rubocop:disable Metrics/MethodLength
 
 class GaugeEntriesController < ApplicationController
+  before_action :authenticate_user!
   # GET gauges/id/gauge_entries/new
   def new
     @gauge = Gauge.find(params[:id])

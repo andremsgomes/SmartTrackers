@@ -1,14 +1,19 @@
 require 'rails_helper'
+require 'shared_contexts'
 
 # rubocop:disable Metrics/BlockLength
 
 describe 'Show gauge', type: :feature do
+  include_context "authentication helper methods"
+  include_context "global before and after hooks"
+  let!(:user) { User.create(email: 'employee@smarttrackers.com', password: '123456', password_confirmation: '123456') }
   let(:gauge1) do
     Gauge.create(name: 'Gauge 1', begin_date: DateTime.new(2022, 1, 1), end_date: DateTime.new(2023, 1, 1), unit: :kwh,
                  time_unit: :days)
   end
 
   before do
+    sign_in(user)
     visit("/gauges/show/#{gauge1.id}")
   end
 
@@ -42,6 +47,10 @@ describe 'Show gauge', type: :feature do
 
   it 'displays a button to add a new entry' do
     expect(page).to have_button('Add a new Entry')
+  end
+
+  it 'displays a button to sign out' do
+    expect(page).to have_button('Sign out')
   end
 
   context 'when there are no entries' do
