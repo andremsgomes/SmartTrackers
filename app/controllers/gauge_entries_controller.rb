@@ -30,4 +30,23 @@ class GaugeEntriesController < ApplicationController
       end
     end
   end
+
+  # PUT /gauge_entries/approve
+  def approve
+    id = params[:id]
+
+    gauge_entry = GaugeEntry.find(id)
+    gauge_entry.approved = true
+
+    respond_to do |format|
+      if gauge_entry.save
+        format.html { redirect_to gauges_show_path(gauge_entry.gauge.id), notice: 'Gauge entry was successfully approved.' }
+        format.json { render :show, status: :created, location: gauge_entry.gauge }
+      else
+        @error = 'Unexpected error.'
+        format.html { redirect_to gauge_url(gauge_entry.gauge), status: :unprocessable_entity }
+        format.json { render json: @error, status: :unprocessable_entity }
+      end
+    end
+  end
 end
