@@ -7,4 +7,8 @@ class Gauge < ApplicationRecord
   def total_measured
     gauge_entries.sum(&:value)
   end
+
+  def total_approved
+    gauge_entries.where(approved: true).count
+  end
 end
