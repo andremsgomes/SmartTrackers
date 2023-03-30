@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# Users
+User.create(email: 'employee@smarttrackers.com', password: '123456', password_confirmation: '123456')
+
 # Gauge 1
 gauge1 = Gauge.create(name: 'Gauge 1', begin_date: DateTime.new(2022, 1, 1), end_date: DateTime.new(2023, 1, 1), unit: :kwh,
              time_unit: :days)
